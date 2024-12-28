@@ -13,8 +13,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:3000") // React app URL
-        //policy.WithOrigins("http://localhost:4200")
+        policy.WithOrigins("https://white-stone-0194ad60f.4.azurestaticapps.net/") 
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
