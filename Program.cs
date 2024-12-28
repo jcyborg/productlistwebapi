@@ -1,3 +1,5 @@
+using ProductSearchApi.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,6 +19,10 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod();
     });
 });
+
+builder.Services.AddTransient<MetroService>();
+builder.Services.AddTransient<ProjectService>();
+builder.Services.AddTransient<ProductService>();
 
 var app = builder.Build();
 
