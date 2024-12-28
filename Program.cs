@@ -9,14 +9,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(policy =>
+//    {
+//        policy.WithOrigins("https://white-stone-0194ad60f.4.azurestaticapps.net") 
+//              .AllowAnyHeader()
+//              .AllowAnyMethod();
+//    });
+//});
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(policy =>
-    {
-        policy.WithOrigins("https://white-stone-0194ad60f.4.azurestaticapps.net") 
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
+    options.AddPolicy("AllowSpecificOrigin", builder =>
+        builder.WithOrigins("https://white-stone-0194ad60f.4.azurestaticapps.net")
+               .AllowAnyMethod()
+               .AllowAnyHeader());
 });
 
 builder.Services.AddTransient<MetroService>();
@@ -34,7 +41,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 
-app.UseCors();
+app.UseCors("AllowSpecificOrigin");
 
 app.MapControllers();
 
