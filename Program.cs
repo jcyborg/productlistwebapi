@@ -13,7 +13,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("https://white-stone-0194ad60f.4.azurestaticapps.net/") 
+        policy.WithOrigins("https://white-stone-0194ad60f.4.azurestaticapps.net") 
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
