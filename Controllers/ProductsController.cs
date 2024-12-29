@@ -30,6 +30,7 @@ namespace ProductSearchApi.Controllers
             var result = from p in products
                          join proj in projects on p.ProjectGroupID equals proj.ProjectGroupID
                          join m in metros on proj.MetroAreaID equals m.MetroAreaID
+                         orderby p.ProductName
                          select new
                          {
                              p.ProductName,
@@ -41,5 +42,6 @@ namespace ProductSearchApi.Controllers
 
             return Ok(result);
         }
+
     }
 }
